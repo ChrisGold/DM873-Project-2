@@ -8,11 +8,15 @@ class Dense(Layer):
         self.units = units
         bias_init = tf.zeros_initializer()
         self.bias = tf.Variable(initial_value=bias_init(shape=(self.units,), dtype='float32'), trainable=True)
-        self.w = None # w is initialized in build
+        self.w = None  # w is initialized in build
 
     def build(self, input_shape):
-        weights_init = tf.random_normal_initializer()(shape=(input_shape[-1], self.units), dtype='float32')
-        self.w = self.add_weight(initial_value=weights_init, trainable=True)
+        self.w = self.add_weight(
+            shape=(input_shape[-1], self.units),
+            initializer=tf.keras.initializers.random_normal(),
+            trainable=True,
+            dtype='float32'
+        )
         super(Dense, self).build(input_shape)
 
     def call(self, x, **kwargs):
