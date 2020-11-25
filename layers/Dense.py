@@ -7,7 +7,7 @@ class Dense(Layer):
         super(Dense, self).__init__(**kwargs)
         self.units = units
         bias_init = tf.zeros_initializer()
-        self.bias = tf.Variable(initial_value=bias_init(shape=(self.units,), dtype='float32'), trainable=True)
+        self.bias = self.add_weight(initial_value=bias_init(shape=(self.units,), dtype='float32'), trainable=True)
         self.w = None  # w is initialized in build
 
     def build(self, input_shape):
