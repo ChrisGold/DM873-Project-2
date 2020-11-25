@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+
+%% Code listings formatting
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}		%% comments
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}	%% line numbers
+\definecolor{codeyellow}{rgb}{0.75,0.55,0.1}  %% strings
+\definecolor{backcolour}{rgb}{1,1,1}		%% background
+\lstloadlanguages{Python, bash}
+\lstdefinestyle{Python}
+{
+	language=Python,
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codeyellow},
+	basicstyle=\ttfamily\footnotesize,
+	title=\lstname,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	numbers=left,
+	rangebeginprefix=//\ begin:\ ,
+	rangeendprefix=//\ end:\ ,
+	includerangemarker=false,
+	frame=lines,
+	numberfirstline=false,
+	firstnumber=auto
+}
+
+
+\lstdefinestyle{bash}
+{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\scriptsize\color{black}\ttfamily,
+    frame=single,
+    title=Terminal window
+}
+
+
+%% tikz diagram graphics
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,calc,positioning}
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+
+\author{
+	Tolnai, Balázs András\\
+ 	\texttt{??@sdu.student.dk}
+  	\and  
+  	Goldapp, Christian Tim Michael\\
+  	\texttt{??@sdu.student.dk}
+  	\and
+  	Ma, Qianhua\\
+  	\texttt{qima18@sdu.student.dk}
+  	\and
+  	Henriksen, Rasmus Aasø\\
+  	\texttt{rhenr17@sdu.student.dk}
+  	\and
+  	Bach, Camilla Marie\\
+  	\texttt{cabac19@sdu.student.dk}
+}
+\date{18. December 2020}
+\title{%
+  \textbf{Pneumonia Project} \\
+  \vspace{10mm}
+  \large DM873 - Deep Learning}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+
+
+\fancyhead[LH]{Coursecode: DM873}
+\fancyhead[RH]{18. Dec 2020\\University of Southern Denmark}
+
+\fancyfoot[LF]{github.com/??}
+\fancyfoot[RF]{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+	\vspace{1.8cm}
+       	\begin{center}
+       		\includegraphics[width=0.5\textwidth]{SDU_BLACK_RGB}
+       	\end{center}
+	 	\vspace{1.8cm}
+	\newpage
+	\tableofcontents
+	\newpage
+
+
+	\include{Layers}
+	%\newpage
+
+	\include{Model}
+	%\newpage
+
+	\include{Evaluation}
+	%\newpage
+
+	\include{Results}
+	%\newpage
+	
+\end{document}
