@@ -2,13 +2,16 @@ import tensorflow as tf
 from tensorflow.keras.layers import *
 
 
-class Pooling(Layer):
-    def __init__(self, poolingtype='max', **kwargs):
-        self.poolingtype = poolingtype
-        super(Pooling, self).__init__(**kwargs)
+class MaxPooling(Layer):
+    def __init__(self, pool_size=(2, 2), strides=None, padding='valid', **kwargs):
+        super(MaxPooling, self).__init__(**kwargs)
+        self.pool_size = pool_size
+        self.strides = strides
+        self.padding = padding
 
     def build(self, input_shape):
-        super(Pooling, self).build(input_shape)
+        super(MaxPooling, self).build(input_shape)
 
     def call(self, x, **kwargs):
-        return None
+        y = tf.nn.max_pool(x, self.pool_size, self.strides, self.padding)
+        return y
