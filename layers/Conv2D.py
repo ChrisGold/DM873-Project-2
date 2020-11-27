@@ -1,7 +1,7 @@
 from typing import Any, Union
 
 import tensorflow as tf
-from keras import backend as K
+from keras import backend as K, activations
 from tensorflow.keras.layers import *
 
 # pylint: disable=g-classes-have-attributes
@@ -14,7 +14,7 @@ class Conv2D(Layer):
     bias: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
-    def __init__(self, filters=32, strides=1, padding='valid', **kwargs):
+    def __init__(self, filters=32, strides=1, padding='valid', activation='relu', **kwargs):
         super(Conv2D, self).__init__(**kwargs)
         self.filters = filters
         self.bias_init = tf.zeros_initializer()
@@ -24,6 +24,7 @@ class Conv2D(Layer):
         self.kernel = None
         self.strides = strides
         self.padding = padding
+        self.activation = activation
 
     def build(self, input_shape):
 
@@ -33,6 +34,9 @@ class Conv2D(Layer):
         self.kernel = self.add_weight(initial_value=self.kernel_init, trainable=True)
 
     def call(self, x, **kwargs):
-        feature_maps = K.conv2d(x, self.kernel, self.strides, self.padding)
-        return tf.nn.relu(feature_maps)
+        y = K.conv2d(x, self.kernel, self.strides, self.padding)
+        activation = activations.get(self.activation)
+        if activation is not None:
+            y = activation(y)
+        return y
 

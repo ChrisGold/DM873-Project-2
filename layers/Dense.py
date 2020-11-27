@@ -1,4 +1,5 @@
 import tensorflow as tf
+from keras import activations
 from tensorflow.keras.layers import *
 
 
@@ -20,10 +21,9 @@ class Dense(Layer):
         )
         super(Dense, self).build(input_shape)
 
-    def call(self, x, activation, **kwargs):
+    def call(self, x, **kwargs):
         y = tf.matmul(x, self.weights) + self.bias
-        if self.activation == 'relu':
-            y = tf.nn.relu(y)
-        elif self.activation == 'sigmoid':
-            y = tf.nn.sigmoid(y)
+        activation = activations.get(self.activation)
+        if activation is not None:
+            y = activation(y)
         return y
