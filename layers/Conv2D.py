@@ -10,12 +10,11 @@ from tensorflow.python.ops.variables import PartitionedVariable
 
 
 class Conv2D(Layer):
-    def __init__(self, filters=32, strides=1, padding='valid', **kwargs):
-        # TODO: Compute output shape
+    # TODO: Compute output shape
     bias: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
-    def __init__(self, filters=32, strides=1, **kwargs):
+    def __init__(self, filters=32, strides=1, padding='valid', **kwargs):
         super(Conv2D, self).__init__(**kwargs)
         self.filters = filters
         self.bias_init = tf.zeros_initializer()
