@@ -19,8 +19,8 @@ class Conv2D(Layer):
         self.filters = filters
         self.bias_init = tf.zeros_initializer()
         self.bias = None
-        kernel_size = (2, 2, self.filters)
-        self.kernel_init = tf.keras.initializers.GlorotUniform()(kernel_size)
+        self.kernel_size = (2, 2, self.filters)
+        self.kernel_init = tf.keras.initializers.GlorotUniform()(self.kernel_size)
         self.kernel = None
         self.strides = strides
         self.padding = padding
@@ -40,3 +40,5 @@ class Conv2D(Layer):
             y = activation(y)
         return y
 
+    def compute_output_shape(self, input_shape):
+        return input_shape[0], input_shape[1]-self.kernel_size[0], input_shape[2]-self.kernel_size[1], self.filters
