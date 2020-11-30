@@ -7,12 +7,17 @@ class Dense(Layer):
     def __init__(self, units=32, activation='relu', **kwargs):
         super(Dense, self).__init__(**kwargs)
         self.units = units
-        bias_init = tf.zeros_initializer()
-        self.bias = self.add_weight(initial_value=bias_init(shape=(self.units,), dtype='float32'), trainable=True)
+        self.b = None  # b is initialized in build
         self.w = None  # w is initialized in build
         self.activation = activation
 
     def build(self, input_shape):
+        self.b = self.add_weight(
+            shape=(input_shape[-1], self.units),
+            initializer=tf.keras.initializers.zeros(),
+            trainable=True,
+            dtype='float32'
+        )
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
             initializer=tf.keras.initializers.random_normal(),
@@ -22,7 +27,7 @@ class Dense(Layer):
         super(Dense, self).build(input_shape)
 
     def call(self, x, **kwargs):
-        y = tf.matmul(x, self.weights) + self.bias
+        y = tf.matmul(x, self.w) + self.b
         activation = activations.get(self.activation)
         if activation is not None:
             y = activation(y)
