@@ -32,3 +32,6 @@ class Dense(Layer):
         if activation is not None:
             y = activation(y)
         return y
+
+    def compute_output_shape(self, input_shape):
+        return input_shape[-1], self.units
