@@ -2,6 +2,7 @@ from typing import Any, Union
 
 import tensorflow as tf
 from keras import backend as K, activations
+from keras.utils import conv_utils
 from tensorflow.keras.layers import *
 
 # pylint: disable=g-classes-have-attributes
@@ -27,7 +28,6 @@ class Conv2D(Layer):
         self.activation = activation
 
     def build(self, input_shape):
-
         super(Conv2D, self).build(input_shape)
         self.bias = self.add_weight(initial_value=self.bias_init(shape=(self.filters,), dtype='float32'),
                                     trainable=True)
@@ -40,3 +40,20 @@ class Conv2D(Layer):
             y = activation(y)
         return y
 
+    def compute_output_shape(self, input_shape):
+        batchsize = input_shape[0]
+        convX = conv_utils.conv_output_length(
+            input_shape[1],
+            self.kernel_size[0],
+            padding=self.padding,
+            stride=self.strides[0],
+            dilation=self.dilation_rate[0]
+        )
+        convY = conv_utils.conv_output_length(
+            input_shape[2],
+            self.kernel_size[1],
+            padding=self.padding,
+            stride=self.strides[1],
+            dilation=self.dilation_rate[1]
+        )
+        return batchsize, convX, convY, self.filters
