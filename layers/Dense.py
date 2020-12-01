@@ -1,6 +1,7 @@
 import tensorflow as tf
-from keras import activations
+from tensorflow.keras import activations
 from tensorflow.keras.layers import *
+from keras import backend as K
 
 
 class Dense(Layer):
@@ -27,11 +28,13 @@ class Dense(Layer):
         super(Dense, self).build(input_shape)
 
     def call(self, x, **kwargs):
-        y = tf.matmul(x, self.w) + self.b
+        y = K.dot(x, self.w) + self.b
         activation = activations.get(self.activation)
         if activation is not None:
             y = activation(y)
         return y
 
     def compute_output_shape(self, input_shape):
-        return input_shape[-1], self.units
+        return (input_shape[0], self.units)
+
+
