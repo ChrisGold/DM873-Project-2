@@ -61,3 +61,19 @@ class Conv2D(Layer):
             dilation=self.dilation_rate[1]
         )
         return batch_size, convX, convY, self.filters
+
+
+if __name__ == '__main__':
+
+
+    def create_model():
+        model = tf.keras.models.Sequential([
+            tf.keras.layers.Input(shape = (224, 224, 3)),
+            Conv2D(),
+            Conv2D(),
+            ])
+        return model
+
+
+    model = create_model()
+    print(model.summary())
