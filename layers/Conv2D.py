@@ -17,7 +17,7 @@ class Conv2D(Layer):
         super(Conv2D, self).__init__(**kwargs)
         self.filters = filters
         self.bias = None
-        self.kernel_size = (2, 2)
+        self.kernel_size = (3, 3)
         self.kernel_init = tf.keras.initializers.GlorotUniform()(self.kernel_size)
         self.kernel = None
         self.strides = strides
@@ -37,8 +37,7 @@ class Conv2D(Layer):
                                       trainable=True)
 
     def call(self, x, **kwargs):
-        y = tf.keras.backend.conv2d(x, self.kernel, strides=(1, 1), padding='valid', data_format=None,
-                                    dilation_rate=(1, 1))
+        y = tf.keras.backend.conv2d(x, self.kernel)
         activation = activations.get(self.activation)
         if activation is not None:
             y = activation(y)
@@ -68,12 +67,21 @@ if __name__ == '__main__':
 
     def create_model():
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Input(shape = (224, 224, 3)),
+            tf.keras.layers.Input(shape=(224, 224, 3)),
             Conv2D(),
             Conv2D(),
             ])
         return model
 
+    def create_keras_model():
+        model = tf.keras.models.Sequential([
+            tf.keras.layers.Input(shape=(224, 224, 3)),
+            tf.keras.layers.Conv2D(32, (3,3)),
+            tf.keras.layers.Conv2D(32, (3,3)),
+            ])
+        return model
 
+    keras = create_keras_model()
+    print(keras.summary())
     model = create_model()
     print(model.summary())
