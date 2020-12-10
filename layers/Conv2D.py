@@ -1,6 +1,7 @@
 from typing import Any, Union
 
 import tensorflow as tf
+import keras.backend as K
 from keras import activations
 from keras.utils import conv_utils
 from tensorflow.keras.layers import *
@@ -13,34 +14,41 @@ class Conv2D(Layer):
     bias: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
-    def __init__(self, filters=32, strides=(1, 1), padding='valid', activation='relu', dilation_rate=(1, 1), **kwargs):
-        super(Conv2D, self).__init__(**kwargs)
+    def __init__(self, filters=32, strides=(1, 1), padding='valid', activation='relu', dilation_rate=(1, 1), batch_size=1, **kwargs):
+
         self.filters = filters
         self.bias = None
         self.kernel_size = (3, 3)
-        self.kernel_init = tf.keras.initializers.GlorotUniform()(self.kernel_size)
         self.kernel = None
         self.strides = strides
         self.padding = padding
         self.activation = activation
         self.dilation_rate = dilation_rate
+        self.batch_size = batch_size
+        if K.image_data_format() == 'channels_first':
+            self.channel_axis = 0
+        else:
+            self.channel_axis = -1
+        super(Conv2D, self).__init__(**kwargs)
+
 
     def build(self, input_shape):
         super(Conv2D, self).build(input_shape)
+        kernel_shape = self.kernel_size + (input_shape[self.channel_axis], self.filters)
         self.bias = self.add_weight(name='bias',
                                     shape=(self.filters,),
                                     dtype='float32',
                                     initializer=tf.zeros_initializer(),
                                     trainable=True)
-        self.kernel = self.add_weight(shape=self.kernel_size,
+        self.kernel = self.add_weight(shape=kernel_shape,
                                       initializer=tf.keras.initializers.GlorotUniform(),
                                       trainable=True)
 
     def call(self, x, **kwargs):
         y = tf.keras.backend.conv2d(x, self.kernel)
-        activation = activations.get(self.activation)
-        if activation is not None:
-            y = activation(y)
+        #activation = activations.get(self.activation)
+        #if activation is not None:
+        #    y = activation(y)
         return y
 
     def compute_output_shape(self, input_shape):
