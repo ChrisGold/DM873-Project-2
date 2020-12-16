@@ -22,7 +22,10 @@ class Conv2D(Layer):
         self.kernel = None
         self.strides = strides
         self.padding = padding
-        self.activation = activation
+        if activation is not None:
+            self.activation = activations.get(activation)
+        else:
+            self.activation = None
         self.dilation_rate = dilation_rate
         self.batch_size = batch_size
         if K.image_data_format() == 'channels_first':
@@ -46,9 +49,8 @@ class Conv2D(Layer):
 
     def call(self, x, **kwargs):
         y = tf.keras.backend.conv2d(x, self.kernel)
-        #activation = activations.get(self.activation)
-        #if activation is not None:
-        #    y = activation(y)
+        if self.activation is not None:
+            y = self.activation(y)
         return y
 
     def compute_output_shape(self, input_shape):

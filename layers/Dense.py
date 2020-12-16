@@ -10,7 +10,10 @@ class Dense(Layer):
         self.units = units
         self.b = None  # b is initialized in build
         self.w = None  # w is initialized in build
-        self.activation = activation
+        if activation is not None:
+            self.activation = activations.get(activation)
+        else:
+            self.activation = None
 
     def build(self, input_shape):
         self.b = self.add_weight(
@@ -29,9 +32,8 @@ class Dense(Layer):
 
     def call(self, x, **kwargs):
         y = K.dot(x, self.w) + self.b
-        activation = activations.get(self.activation)
-        if activation is not None:
-            y = activation(y)
+        if self.activation is not None:
+            y = self.activation(y)
         return y
 
     def compute_output_shape(self, input_shape):
