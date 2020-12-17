@@ -97,5 +97,3 @@ if __name__ == '__main__':
     print(keras.summary())
     model = create_model()
     print(model.summary())
-
-
