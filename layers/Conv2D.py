@@ -43,12 +43,14 @@ class Conv2D(Layer):
                                     dtype='float32',
                                     initializer=tf.zeros_initializer(),
                                     trainable=True)
-        self.kernel = self.add_weight(shape=kernel_shape,
+        self.kernel = self.add_weight(name='kernel',
+                                      shape=kernel_shape,
                                       initializer=tf.keras.initializers.GlorotUniform(),
                                       trainable=True)
 
     def call(self, x, **kwargs):
         y = tf.keras.backend.conv2d(x, self.kernel)
+        y = K.bias_add(y, self.bias)
         if self.activation is not None:
             y = self.activation(y)
         return y
@@ -95,3 +97,5 @@ if __name__ == '__main__':
     print(keras.summary())
     model = create_model()
     print(model.summary())
+
+
