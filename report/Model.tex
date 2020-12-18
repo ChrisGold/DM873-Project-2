@@ -1,5 +1,8 @@
 \section{Model}
 
+Before building the model, a data generator was used to both rescale but also do dataaugmentation on the images. As there is not much trainingdata, dataaugmentation is crucial to get good results and fight overfitting. The images was sheared, zoomed, rotated etc., to make sure, that there was some difference in the images the net was trained on, so that it would be harder to learn by heart and thus perform bad on the testdata.  
+\newline
+\newline
 \textbf{The Net}
 \newline
 Our model is a generally quite simple model. It consists of convolution layers, followed by maxpooling layers. The filter sizes are exponentially increasing, so first we can detect larger features (like edges), and as the sizes of the feature maps get smaller, more filters can detect smaller, more detailed features. We use Batch normalization, to speed up the training time, and, perhaps reduce overfitting. We also utilised spatial dropout. Opposed to normal dropout, which is not very effective in convolutional nets, rather than dropping out individual elements, it drops out entire feature maps. This helps promote independence between feature maps. As usual, the net’s head is a fairly large dense layer.
