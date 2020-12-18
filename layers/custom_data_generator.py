@@ -39,11 +39,11 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
 
         for i, file in enumerate(batch):
             if self.labels[file] == 0:
-                single_ch_img = np.loadtxt(self.directory + "/NORMAL/" + file)
+                single_ch_img = np.genfromtxt(self.directory + "/NORMAL/" + file)
                 X_test[i, ] = np.expand_dims(np.stack((single_ch_img,) * self.channels, axis=-1), axis=0)
                 y_test[i] = self.labels[file]
             else:
-                single_ch_img = np.loadtxt(self.directory + "/PNEUMONIA/" + file)
+                single_ch_img = np.genfromtxt(self.directory + "/PNEUMONIA/" + file)
                 X_test[i, ] = np.expand_dims(np.stack((single_ch_img,) * self.channels, axis=-1), axis=0)
                 y_test[i] = self.labels[file]
             return X_test, y_test
