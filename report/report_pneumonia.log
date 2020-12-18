@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  25 NOV 2020 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.21)  18 DEC 2020 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -101,19 +101,39 @@ s
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count93
 \lst@gtempboxa=\box27
 \lst@token=\toks18
 \lst@length=\count94
-\lst@currlwidth=\dimen112
+\lst@currlwidth=\dimen114
 \lst@column=\count95
 \lst@pos=\count96
-\lst@lostspace=\dimen113
-\lst@width=\dimen114
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
 \lst@newlines=\count97
 \lst@lineno=\count98
-\lst@maxwidth=\dimen115
+\lst@maxwidth=\dimen117
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
@@ -133,10 +153,6 @@ Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
@@ -156,8 +172,8 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks19
-\pgfutil@tempdima=\dimen116
-\pgfutil@tempdimb=\dimen117
+\pgfutil@tempdima=\dimen118
+\pgfutil@tempdimb=\dimen119
 
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
@@ -173,23 +189,6 @@ Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
-)
-\Gin@req@height=\dimen118
-\Gin@req@width=\dimen119
-)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
@@ -539,18 +538,18 @@ File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 (./Model.aux) (./Evaluation.aux) (./Results.aux))
 \openout1 = `report_pneumonia.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -588,20 +587,19 @@ LaTeX Font Info:    ... okay on input line 102.
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 102.
-\c@lstlisting=\count122
+(lastpage)             ! on input line 104.
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count123
+\scratchcounter=\count122
 \scratchdimen=\dimen169
 \scratchbox=\box60
-\nofMPsegments=\count124
-\nofMParguments=\count125
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count126
+\MPscratchCnt=\count125
 \MPscratchDim=\dimen170
-\MPnumerator=\count127
-\makeMPintoPDFobject=\count128
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks32
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
@@ -612,15 +610,17 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+\c@lstlisting=\count128
+
 ABD: EveryShipout initializing macros
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 103.
+(Font)              <12> on input line 105.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 103.
+(Font)              <8> on input line 105.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 103.
+(Font)              <6> on input line 105.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-03.
+05.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -628,16 +628,27 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <SDU_BLACK_RGB.png, id=4, 398.4486pt x 106.4778pt>
 File: SDU_BLACK_RGB.png Graphic file (type png)
 <use SDU_BLACK_RGB.png>
-Package pdftex.def Info: SDU_BLACK_RGB.png  used on input line 107.
+Package pdftex.def Info: SDU_BLACK_RGB.png  used on input line 109.
 (pdftex.def)             Requested size: 215.0023pt x 57.45653pt.
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./SDU_B
 LACK_RGB.png>]
-(./report_pneumonia.toc)
-\tf@toc=\write4
-\openout4 = `report_pneumonia.toc'.
+\openout2 = `Layers.aux'.
 
+
+(./Layers.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 16.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 3--115
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--115
+
+ []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -645,53 +656,90 @@ Make it at least 25.22153pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2]
-\openout2 = `Layers.aux'.
-
- (./Layers.tex) [3
+[2
 
 ]
 \openout2 = `Model.aux'.
 
- (./Model.tex) [4
+ (./Model.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 3--118
+
+ []
+
+[3
 
 
 ]
 \openout2 = `Evaluation.aux'.
 
- (./Evaluation.tex) [5
+ (./Evaluation.tex) [4
 
 
 ]
 \openout2 = `Results.aux'.
 
- (./Results.tex) [6
+ (./Results.tex
+<./img/over_fit_1.jpg, id=29, 726.46407pt x 139.27031pt>
+File: ./img/over_fit_1.jpg Graphic file (type jpg)
+<use ./img/over_fit_1.jpg>
+Package pdftex.def Info: ./img/over_fit_1.jpg  used on input line 4.
+(pdftex.def)             Requested size: 363.23114pt x 69.63498pt.
+<./img/limitless_overfitting.png, id=30, 330.23375pt x 33.12375pt>
+File: ./img/limitless_overfitting.png Graphic file (type png)
+<use ./img/limitless_overfitting.png>
+Package pdftex.def Info: ./img/limitless_overfitting.png  used on input line 6.
+
+(pdftex.def)             Requested size: 165.11646pt x 16.56183pt.
+<./img/double.jpg, id=31, 698.61pt x 194.97844pt>
+File: ./img/double.jpg Graphic file (type jpg)
+<use ./img/double.jpg>
+Package pdftex.def Info: ./img/double.jpg  used on input line 11.
+(pdftex.def)             Requested size: 349.30414pt x 97.48897pt.
+<./img/long_train.jpg, id=32, 227.34938pt x 149.8097pt>
+File: ./img/long_train.jpg Graphic file (type jpg)
+<use ./img/long_train.jpg>
+Package pdftex.def Info: ./img/long_train.jpg  used on input line 16.
+(pdftex.def)             Requested size: 113.67441pt x 74.90465pt.
+<./img/eval.jpg, id=33, 473.51906pt x 28.60687pt>
+File: ./img/eval.jpg Graphic file (type jpg)
+<use ./img/eval.jpg>
+Package pdftex.def Info: ./img/eval.jpg  used on input line 21.
+(pdftex.def)             Requested size: 236.75894pt x 14.30339pt.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 2--124
+
+ []
+
+[5
 
 
-] 
+ <./img/over_fit_1.jpg> <./img/limitless_overfitting.png> <./img/double.jpg> <.
+/img/long_train.jpg> <./img/eval.jpg>] 
 AED: lastpage setting LastPage
 (./report_pneumonia.aux (./Layers.aux) (./Model.aux) (./Evaluation.aux)
 (./Results.aux)) ) 
 Here is how much of TeX's memory you used:
- 16676 strings out of 492162
- 344481 string characters out of 6125292
- 428351 words of memory out of 5000000
- 20715 multiletter control sequences out of 15000+600000
- 12393 words of font info for 32 fonts, out of 8000000 for 9000
+ 16715 strings out of 492162
+ 345231 string characters out of 6125292
+ 431181 words of memory out of 5000000
+ 20755 multiletter control sequences out of 15000+600000
+ 13009 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,67p,444b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,67p,1165b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/
-cm-super-t1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super
-/sfbx1095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/s
-fbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfb
-x1728.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1
-095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm120
-0.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.
-pfb>
-Output written on report_pneumonia.pdf (6 pages, 119286 bytes).
+cm-super-t1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sf
+bx1095.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx
+1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx17
+28.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1095
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb
+>
+Output written on report_pneumonia.pdf (5 pages, 278375 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 64 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
