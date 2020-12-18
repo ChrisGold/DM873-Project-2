@@ -1,1 +1,13 @@
 \section{Layers}
+
+\textbf{The Dense Layer}
+\\
+The Dense layer implementation is quite simple. The layer inherits the layer class and takes as arguments units and an activation function. The unit parameter sets the amount of biases and weights created, as every unit is supposed to have one of each.  The activation function is set as relu as default, since this is a good all-round activation function and commonly used.  The activation function can be altered if needed.  \\
+The biases are initialized with zeros because .... and the weights are initialized with a random normal function to ensure that the weights have different values.  The layer outputs the dotproduct of the input and the weights with the bias added. If an activation function is given as argument, then this is applied to the results before it is outputted. 
+\\
+\textbf{The Convolutional Layer}
+\\
+The convolutional layer takes as arguments filters, kernelsize, strides, padding, activation and dilationrate. The filters determines how many kernels is applied in each layer and is 32 by default. This value is important for the user to tune as a hyperparameter. The kernesize determines the size of each kernel to be run over the input and is 3 by 3 as default. The parameter strides is initialized to 1 by 1, and does the convolution operation without skipping pixels. The user can set activation function to be applied to the results after convolution and before output. The parameter padding is set to 'valid',  but the user can specify if they want another type of padding at the edges of the image.. The dilationrate is set to one to not do any dilution. 
+\\
+\textbf{The MaxPooling Layer}
+\\
