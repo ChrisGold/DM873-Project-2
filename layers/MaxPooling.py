@@ -5,6 +5,7 @@ from keras.utils import conv_utils
 from tensorflow.keras.layers import *
 
 
+@tf.keras.utils.register_keras_serializable()
 class MaxPooling(Layer):
     def __init__(self, pool_size=(2, 2), strides=None, padding='VALID', **kwargs):
         super(MaxPooling, self).__init__(**kwargs)
@@ -27,8 +28,18 @@ class MaxPooling(Layer):
         cols = ceil(float(input_shape[2]) / float(self.strides[1]))
         return input_shape[0], rows, cols, input_shape[-1]
 
+    #def get_config(self):
+    #    config = {'pool_size': self.pool_size,
+    #              'padding': self.padding,
+    #              'strides': self.strideStride,}
+    #             # 'data_format': self.data_format}
+
+    #    base_config = super(MaxPooling, self).get_config()
+    #    return dict(list(base_config.items()) + list(config.items()))
+
+
     def get_config(self):
-        config = super(MaxPooling, self).get_config()
+        config = super().get_config()
         config.update({
             'pool_size': self.pool_size,
             "strides": self.strides,
@@ -40,29 +51,14 @@ class MaxPooling(Layer):
 if __name__ == '__main__':
     def create_model():
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Input(shape=(224, 224, 3)),
-            Dense(units=32),
-            Dense(units=32),
-            Dense(units=64),
-            MaxPooling(pool_size=(2, 2)),
-            Dense(units=128),
-        ])
-        return model
-
-
-    def create_keras_model():
-        model = tf.keras.models.Sequential([
-            tf.keras.layers.Input(shape=(224, 224, 3)),
+            tf.keras.layers.Input(shape=(32, 32, 3)),
             tf.keras.layers.Dense(units=32),
             tf.keras.layers.Dense(units=32),
             tf.keras.layers.Dense(units=64),
-            tf.keras.layers.MaxPooling2D(),
-            tf.keras.layers.Dense(units=128),
+            MaxPooling(pool_size=(2, 2)),
+            tf.keras.layers.Dense(units=10, activation='sigmoid',)
         ])
         return model
 
 
-    model = create_model()
-    print(model.summary())
-    keras = create_keras_model()
-    print(keras.summary())
+

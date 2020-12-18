@@ -4,6 +4,7 @@ from tensorflow.keras.layers import *
 from keras import backend as K
 
 
+@tf.keras.utils.register_keras_serializable()
 class Dense(Layer):
     def __init__(self, units=32, activation='relu', **kwargs):
         super(Dense, self).__init__(**kwargs)
@@ -20,13 +21,15 @@ class Dense(Layer):
             shape=(self.units,),
             initializer=tf.keras.initializers.zeros(),
             trainable=True,
-            dtype='float32'
+            dtype='float32',
+            name='dense_bias',
         )
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
             initializer=tf.keras.initializers.random_normal(),
             trainable=True,
-            dtype='float32'
+            dtype='float32',
+            name="dense_weights",
         )
         super(Dense, self).build(input_shape)
 
@@ -40,7 +43,7 @@ class Dense(Layer):
         return input_shape[0], self.units
 
     def get_config(self):
-        config = super(Dense, self).get_config()
+        config = super().get_config()
         config.update({
             'units': self.units,
             "activation": self.activation,

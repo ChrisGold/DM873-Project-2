@@ -1,4 +1,4 @@
-from typing import Any, Union
+from typing import Any, Union, Tuple
 
 import tensorflow as tf
 import keras.backend as K
@@ -10,16 +10,18 @@ from tensorflow.python.distribute.sharded_variable import ShardedVariable
 from tensorflow.python.ops.variables import PartitionedVariable
 
 
+@tf.keras.utils.register_keras_serializable()
 class Conv2D(Layer):
     bias: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
-    def __init__(self, filters=32, strides=(1, 1), padding='valid', activation='relu', dilation_rate=(1, 1),
-                 batch_size=1, **kwargs):
+    def __init__(self, filters: int = 32, kernel_size: Tuple[int, int] = (3, 3), strides: Tuple[int, int] = (1, 1), padding: bool ='VALID',
+                 activation='relu',
+                 dilation_rate=(1, 1), batch_size=1, **kwargs):
 
         self.filters = filters
         self.bias = None
-        self.kernel_size = (3, 3)
+        self.kernel_size = kernel_size
         self.kernel = None
         self.strides = strides
         self.padding = padding
@@ -36,9 +38,8 @@ class Conv2D(Layer):
         super(Conv2D, self).__init__(**kwargs)
 
     def build(self, input_shape):
-        super(Conv2D, self).build(input_shape)
         kernel_shape = self.kernel_size + (input_shape[self.channel_axis], self.filters)
-        self.bias = self.add_weight(name='bias',
+        self.bias = self.add_weight(name='conv_bias',
                                     shape=(self.filters,),
                                     dtype='float32',
                                     initializer=tf.zeros_initializer(),
@@ -47,6 +48,7 @@ class Conv2D(Layer):
                                       shape=kernel_shape,
                                       initializer=tf.keras.initializers.GlorotUniform(),
                                       trainable=True)
+        super(Conv2D, self).build(input_shape)
 
     def call(self, x, **kwargs):
         y = tf.keras.backend.conv2d(x, self.kernel)
@@ -74,17 +76,18 @@ class Conv2D(Layer):
         return batch_size, convX, convY, self.filters
 
     def get_config(self):
-        config = super(Conv2D, self).get_config()
+        config = super().get_config()
         config.update({
             "filters": self.filters,
+            "kernel_size": self.kernel_size,
             "strides": self.strides,
             "padding": self.padding,
             "activation": self.activation,
-            'pool_size': self.pool_size,
             "dilation_rate": self.dilation_rate,
             "batch_size": self.batch_size,
         })
         return config
+
 
 
 if __name__ == '__main__':
@@ -110,3 +113,4 @@ if __name__ == '__main__':
     print(keras.summary())
     model = create_model()
     print(model.summary())
+    h = tf.keras.models.load_model('my_model', custom_objects=...)
