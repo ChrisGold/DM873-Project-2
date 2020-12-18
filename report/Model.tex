@@ -1,1 +1,10 @@
 \section{Model}
+
+\textbf{The Net}
+
+Our model is a generally quite simple model. It consists of convolution layers, followed by maxpooling layers. The filter sizes are exponentially increasing, so first we can detect larger features (like edges), and as the sizes of the feature maps get smaller, more filters can detect smaller, more detailed features. We use Batch normalization, to speed up the training time, and, perhaps reduce overfitting. We also utilised spatial dropout. Opposed to normal dropout, which is not very effective in conv nets, rather than dropping out individual elements, it drops out entire feature maps. This helps promote independence between feature maps. As usual, the net’s head is a fairly large dense layer.
+\\\
+\\\
+\textbf{Training}
+
+The training takes two iterations. First we trained the model on the training data, using validation. wet set the number of epochs to 1000, and an early stopping callback got created, to stop the training at the right moment, with a certain patience. After this, the program reads the number of epochs from history and retrains the model on the whole dataset, without validation, hopefully with better results.
