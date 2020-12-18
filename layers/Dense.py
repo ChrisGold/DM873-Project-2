@@ -39,6 +39,14 @@ class Dense(Layer):
     def compute_output_shape(self, input_shape):
         return input_shape[0], self.units
 
+    def get_config(self):
+        config = super(Dense, self).get_config()
+        config.update({
+            'units': self.units,
+            "activation": self.activation,
+        })
+        return config
+
 
 if __name__ == '__main__':
 

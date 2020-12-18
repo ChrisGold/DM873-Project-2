@@ -23,10 +23,18 @@ class MaxPooling(Layer):
         return y
 
     def compute_output_shape(self, input_shape):
-        # conv_len = conv_utils.conv_output_length(input_shape[1], self.pool_size[0], self.padding, self.strides[0])
         rows = ceil(float(input_shape[1]) / float(self.strides[0]))
         cols = ceil(float(input_shape[2]) / float(self.strides[1]))
         return input_shape[0], rows, cols, input_shape[-1]
+
+    def get_config(self):
+        config = super(MaxPooling, self).get_config()
+        config.update({
+            'pool_size': self.pool_size,
+            "strides": self.strides,
+            "padding": self.padding,
+        })
+        return config
 
 
 if __name__ == '__main__':
