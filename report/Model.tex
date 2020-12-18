@@ -1,5 +1,11 @@
 \section{Model}
 
+
+\textbf{Data augmentation}
+\newline
+
+Data augmentation is important. Augmenting the data means (in our case) changing the pictures in a random way before showing it to the network. This way we can learn a lot more from the data at our disposal, as we are not training on the exact same images. (Ofcourse, more data would still be better). We used horizontal flip, and skipped on vertical, thinking that otherwise we would never get an image of a lung upside down. We also used zoom, rotation, shear and shift.
+
 \textbf{The Net}
 \newline
 Our model is a generally quite simple model. It consists of convolution layers, followed by maxpooling layers. The filter sizes are exponentially increasing, so first we can detect larger features (like edges), and as the sizes of the feature maps get smaller, more filters can detect smaller, more detailed features. We use Batch normalization, to speed up the training time, and, perhaps reduce overfitting. We also utilised spatial dropout. Opposed to normal dropout, which is not very effective in convolutional nets, rather than dropping out individual elements, it drops out entire feature maps. This helps promote independence between feature maps. As usual, the net’s head is a fairly large dense layer.
