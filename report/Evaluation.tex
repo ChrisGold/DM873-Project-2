@@ -1,5 +1,12 @@
 \section{Evaluation}
-
+Due to a misunderstanding, the custom generator for the evaluation-part, started out as a custom generator for the training and validation data. Since a lot of work was put into this, it will be briefly described as well. The directories was split into training and validation data by creating a new database, that contained two subsets; A training set with $1072$ samples of each class and a validation set with $269$ samples of each class.  The structure is as follows: 
+\newline
+\includegraphics[scale=0.5]{dir}
+\newline
+\newline
+Before beginning the datagenerator for the training data, there was made a label and partition dictionary with the paths for the images. The images' labels was encoded as $0$ for normal and $1$ for pneumonia. The datagenerator has a function, that loads the images in grayscale format to change the colorchannels from $3$ to $1$. The datagenerator also rescales the values of every pixel to between $0$ and $1$, since this is often improving performance of a neural net. 
+\newline
+\newline
 \textbf{The Custom Data-Generator}
 \newline
 A data-generator is conceptually simple. It is a stream of input, through a filter or transformation, to a desired output.
