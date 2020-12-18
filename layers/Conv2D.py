@@ -16,9 +16,7 @@ class Conv2D(Layer):
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
     def __init__(self, filters: int = 32, kernel_size: Tuple[int, int] = (3, 3), strides: Tuple[int, int] = (1, 1),
-                 padding: bool = 'VALID',
-                 activation='relu',
-                 dilation_rate=(1, 1), batch_size=1, **kwargs):
+                 padding: bool = 'VALID',activation='relu', dilation_rate=(1, 1), batch_size=1, **kwargs):
 
         self.filters = filters
         self.bias = None

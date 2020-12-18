@@ -28,16 +28,6 @@ class MaxPooling(Layer):
         cols = ceil(float(input_shape[2]) / float(self.strides[1]))
         return input_shape[0], rows, cols, input_shape[-1]
 
-    #def get_config(self):
-    #    config = {'pool_size': self.pool_size,
-    #              'padding': self.padding,
-    #              'strides': self.strideStride,}
-    #             # 'data_format': self.data_format}
-
-    #    base_config = super(MaxPooling, self).get_config()
-    #    return dict(list(base_config.items()) + list(config.items()))
-
-
     def get_config(self):
         config = super().get_config()
         config.update({
