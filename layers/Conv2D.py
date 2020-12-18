@@ -15,7 +15,8 @@ class Conv2D(Layer):
     bias: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
     kernel: Union[Union[PartitionedVariable, ShardedVariable, Conv2D], Any]
 
-    def __init__(self, filters: int = 32, kernel_size: Tuple[int, int] = (3, 3), strides: Tuple[int, int] = (1, 1), padding: bool ='VALID',
+    def __init__(self, filters: int = 32, kernel_size: Tuple[int, int] = (3, 3), strides: Tuple[int, int] = (1, 1),
+                 padding: bool = 'VALID',
                  activation='relu',
                  dilation_rate=(1, 1), batch_size=1, **kwargs):
 
@@ -38,14 +39,14 @@ class Conv2D(Layer):
         super(Conv2D, self).__init__(**kwargs)
 
     def build(self, input_shape):
-        kernel_shape = self.kernel_size + (input_shape[self.channel_axis], self.filters)
+        shape = (self.kernel_size[0], self.kernel_size[1], (input_shape[self.channel_axis]), self.filters)
         self.bias = self.add_weight(name='conv_bias',
                                     shape=(self.filters,),
                                     dtype='float32',
                                     initializer=tf.zeros_initializer(),
                                     trainable=True)
         self.kernel = self.add_weight(name='kernel',
-                                      shape=kernel_shape,
+                                      shape=shape,
                                       initializer=tf.keras.initializers.GlorotUniform(),
                                       trainable=True)
         super(Conv2D, self).build(input_shape)
@@ -89,7 +90,6 @@ class Conv2D(Layer):
         return config
 
 
-
 if __name__ == '__main__':
     def create_model():
         model = tf.keras.models.Sequential([
@@ -113,4 +113,3 @@ if __name__ == '__main__':
     print(keras.summary())
     model = create_model()
     print(model.summary())
-    h = tf.keras.models.load_model('my_model', custom_objects=...)

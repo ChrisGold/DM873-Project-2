@@ -26,8 +26,8 @@ class Dense(Layer):
         )
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
-            initializer=tf.keras.initializers.random_normal(),
             trainable=True,
+            initializer=tf.keras.initializers.random_normal(),
             dtype='float32',
             name="dense_weights",
         )
@@ -52,27 +52,25 @@ class Dense(Layer):
 
 
 if __name__ == '__main__':
-
-
     def create_model():
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Input(shape = (224, 224, 3)),
+            tf.keras.layers.Input(shape=(224, 224, 3)),
             Dense(),
             Dense(),
             Dense(units=64),
             Dense(units=128),
-            ])
+        ])
         return model
 
 
     def create_keras_model():
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Input(shape = (224, 224, 3)),
+            tf.keras.layers.Input(shape=(224, 224, 3)),
             tf.keras.layers.Dense(units=32),
             tf.keras.layers.Dense(units=32),
             tf.keras.layers.Dense(units=64),
             tf.keras.layers.Dense(units=128),
-            ])
+        ])
         return model
 
 
