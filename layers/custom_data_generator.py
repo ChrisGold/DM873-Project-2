@@ -50,8 +50,7 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
 
 
 if __name__ == '__main__':
-
-    #test
+    # test
     import numpy as np
     import tensorflow as tf
     from tensorflow.keras.models import Sequential
@@ -72,4 +71,4 @@ if __name__ == '__main__':
     ])
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
 
-    model.fit(x=training_generator,)
+    model.fit(x=training_generator, )
