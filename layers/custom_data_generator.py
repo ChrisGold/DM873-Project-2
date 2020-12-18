@@ -40,12 +40,15 @@ class CustomDataGenerator(tf.keras.utils.Sequence):
         for i, file in enumerate(batch):
             if self.labels[file] == 0:
                 single_ch_img = np.genfromtxt(self.directory + "/NORMAL/" + file)
-                X_test[i, ] = np.expand_dims(np.stack((single_ch_img,) * self.channels, axis=-1), axis=0)
+                rescaled_image = single_ch_img * (1/255.)
+                X_test[i, ] = np.expand_dims(np.stack((rescaled_image,) * self.channels, axis=-1), axis=0)
                 y_test[i] = self.labels[file]
             else:
                 single_ch_img = np.genfromtxt(self.directory + "/PNEUMONIA/" + file)
-                X_test[i, ] = np.expand_dims(np.stack((single_ch_img,) * self.channels, axis=-1), axis=0)
+                rescaled_image = single_ch_img * (1 / 255.)
+                X_test[i, ] = np.expand_dims(np.stack((rescaled_image,) * self.channels, axis=-1), axis=0)
                 y_test[i] = self.labels[file]
+            print(X_test.shape)
             return X_test, y_test
 
 
@@ -72,3 +75,13 @@ if __name__ == '__main__':
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
 
     model.fit(x=training_generator, )
+    
+    model.evaluate(training_generator)
+
+    batch = training_generator.__getitem__(1)
+    data = batch[0][0]
+    mat = np.reshape(data, (224, 224))
+
+    from PIL import Image as im
+    image = im.fromarray(mat * 255.)
+    image.show()
